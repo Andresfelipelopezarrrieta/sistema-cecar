@@ -1,10 +1,11 @@
 const mysql = require('mysql2');
 
 const conexion = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'cecar'
+    host: process.env.DB_HOST || 'zephyr.proxy.rlwy.net',
+    user: process.env.DB_USER || 'root',
+    password: process.env.DB_PASSWORD || 'zACPLbnVqhZBMPZDPVnVqJwHzqQimUCB',
+    database: process.env.DB_NAME || 'railway',
+    port: process.env.DB_PORT || 13820
 });
 
 conexion.connect((error) => {
