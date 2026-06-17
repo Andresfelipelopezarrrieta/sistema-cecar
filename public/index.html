@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sistema CECAR</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h1>Sistema de Asesorías Académicas CECAR</h1>
+
+    <form id="formulario">
+    <input id="nombre" type="text" placeholder="Nombre" required>
+    <input id="correo" type="email" placeholder="Correo" required>
+    <input id="curso" type="text" placeholder="Curso" required>
+    <input id="tema" type="text" placeholder="Tema" required>
+
+    <textarea id="descripcion" placeholder="Descripción"></textarea>
+
+    <select id="urgencia">
+        <option>Bajo</option>
+        <option>Medio</option>
+        <option>Alto</option>
+    </select>
+
+    <button type="submit">Enviar Solicitud</button>
+</form>
+
+<script src="script.js"></script>
+
+</body>
+</html>

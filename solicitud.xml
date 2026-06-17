@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<solicitud xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:noNamespaceSchemaLocation="solicitud.xsd">
+
+    <estudiante>
+        <nombre>Karolay Mizzar Arrieta</nombre>
+        <correo>karolay.mizzar@cecar.edu.co</correo>
+        <curso>Programación I</curso>
+    </estudiante>
+
+    <detalle>
+        <tema>proyecto final</tema>
+        <descripcion>No sé cómo estructurar el proyecto final, tengo muchas dudas sobre la arquitectura del sistema y la entrega es mañana.</descripcion>
+        <urgencia>alto</urgencia>
+        <clasificacion>pendiente</clasificacion>
+    </detalle>
+
+    <metadata>
+        <fecha>2026-06-17T10:00:00</fecha>
+        <sistema_origen>SISTEMA-ACADEMICO-CECAR</sistema_origen>
+    </metadata>
+
+</solicitud>

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <!-- ============================================
+         SCHEMA XSD - Sistema de Asesorías CECAR
+         Valida el formato XML enviado por el
+         Sistema Académico al Middleware central
+         ============================================ -->
+
+    <xs:element name="solicitud">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="estudiante" type="tipoEstudiante"/>
+                <xs:element name="detalle"    type="tipoDetalle"/>
+                <xs:element name="metadata"   type="tipoMetadata"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- ============================================
+         TIPO: Estudiante
+         ============================================ -->
+    <xs:complexType name="tipoEstudiante">
+        <xs:sequence>
+
+            <!-- Nombre: obligatorio, mínimo 3 caracteres, máximo 100 -->
+            <xs:element name="nombre">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:minLength value="3"/>
+                        <xs:maxLength value="100"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+
+            <!-- Correo: obligatorio, formato válido de email -->
+            <xs:element name="correo">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:pattern value="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}"/>
+                        <xs:maxLength value="100"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+
+            <!-- Curso: obligatorio, máximo 100 caracteres -->
+            <xs:element name="curso">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:minLength value="2"/>
+                        <xs:maxLength value="100"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- ============================================
+         TIPO: Detalle de la solicitud
+         ============================================ -->
+    <xs:complexType name="tipoDetalle">
+        <xs:sequence>
+
+            <!-- Tema: obligatorio, máximo 100 caracteres -->
+            <xs:element name="tema">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:minLength value="2"/>
+                        <xs:maxLength value="100"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+
+            <!-- Descripción: obligatoria, mínimo 20 caracteres -->
+            <xs:element name="descripcion">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:minLength value="20"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+
+            <!-- Urgencia: solo acepta bajo, medio o alto -->
+            <xs:element name="urgencia">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="bajo"/>
+                        <xs:enumeration value="medio"/>
+                        <xs:enumeration value="alto"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+
+            <!-- Clasificación: pendiente al enviar, el sistema la asigna -->
+            <xs:element name="clasificacion">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="pendiente"/>
+                        <xs:enumeration value="simple"/>
+                        <xs:enumeration value="compleja"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- ============================================
+         TIPO: Metadata del mensaje
+         ============================================ -->
+    <xs:complexType name="tipoMetadata">
+        <xs:sequence>
+
+            <!-- Fecha en formato ISO 8601 -->
+            <xs:element name="fecha" type="xs:dateTime"/>
+
+            <!-- Sistema de origen del mensaje -->
+            <xs:element name="sistema_origen">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:minLength value="3"/>
+                        <xs:maxLength value="100"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>
